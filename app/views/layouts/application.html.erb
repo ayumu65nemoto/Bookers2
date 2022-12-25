@@ -36,11 +36,11 @@
               </li>
               <li>
                 <%= link_to  books_path, class: "nav-link text-light" do %>
-                  <i class="far fa-book-open"></i> Books
+                  <i class="fas fa-book-open"></i> Books
                 <% end %>
               </li>
               <li>
-                <%= link_to destroy_user_session_path, method: :delet, class: "nav-link text-light" do %>
+                <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
                   <i class="fas fa-sign-out-alt"></i> Log out
                 <% end %>
               </li>
@@ -72,6 +72,7 @@
       </nav>
     </header>
     <main>
+      <p id="notice"><%= notice %></p>
       <%= yield %>
     </main>
     <footer>
