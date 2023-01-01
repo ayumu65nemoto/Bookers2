@@ -92,7 +92,7 @@
               </td>
               <td>
                 <div>
-                  <p>コメント数：<%= @book.post_comments.count %></p>
+                  <p>コメント数：<%= @book.book_comments.count %></p>
                 </div>
               </td>
             <% end %>
@@ -103,16 +103,16 @@
         <tbody>
           <tr>
             <td>
-              <% @book.post_comments.each do |post_comment| %>
+              <% @book.book_comments.each do |book_comment| %>
                 <p>
-                  <%= image_tag post_comment.user.get_profile_image(100,100) %>
-                  <%= post_comment.comment %>
-                  <% if post_comment.user == current_user %>
-                    <%= link_to "Destroy", book_post_comment_path(post_comment.book, post_comment), method: :delete, class: "btn btn-sm btn-danger" %>
+                  <%= image_tag book_comment.user.get_profile_image(100,100) %>
+                  <%= book_comment.comment %>
+                  <% if book_comment.user == current_user %>
+                    <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-sm btn-danger" %>
                   <% end %>
                 </p>
-                <%= link_to user_path(post_comment.user) do %>
-                  <%= post_comment.user.name %>
+                <%= link_to user_path(book_comment.user) do %>
+                  <%= book_comment.user.name %>
                 <% end %>
               <% end %>
             </td>
@@ -120,7 +120,7 @@
         </tbody>
       </table>
       <div>
-        <%= form_with model: [@book, @post_comment] do |f| %>
+        <%= form_with model: [@book, @book_comment] do |f| %>
           <div class="form-group">
             <%= f.text_area :comment, rows: '5', class: "form-control book_comment" %>
           </div>
